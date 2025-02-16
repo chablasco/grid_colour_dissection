@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CB Interactive Color Grid</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    let gridSize; // Size of each square in the grid
+    let color1, color2;
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight); // Fullscreen canvas
+      color1 = color('#6B3E24'); // Initial color 1
+      color2 = color('#1D2058'); // Initial color 2
+      noStroke();
+    }
+
+    function draw() {
+      gridSize = mouseY; // Grid size is based on the mouse's vertical position
+      gridSize = constrain(gridSize, 1, 1000); // Constrain the grid size to reasonable values
+
+      for (let y = 0; y < height; y += gridSize) {
+        for (let x = 0; x < width; x += gridSize) {
+          // Alternate colors based on grid position
+          let currentColor = (int(x / gridSize) + int(y / gridSize)) % 2 === 0 ? color1 : color2;
+          fill(currentColor);
+          rect(x, y, gridSize, gridSize);
+        }
+      }
+    }
+
+    function keyPressed() {
+      if (key === 'c' || key === 'C') {
+        // Change colors randomly when 'C' is pressed
+        color1 = color(random(255), random(255), random(255));
+        color2 = color(random(255), random(255), random(255));
+      }
+    }
+
+    function windowResized() {
+      resizeCanvas(windowWidth, windowHeight); // Adjust canvas size dynamically
+    }
+  </script>
+</body>
+</html>
