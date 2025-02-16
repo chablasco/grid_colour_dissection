@@ -30,8 +30,8 @@
       gridSize = mouseY; // Grid size is based on the mouse's vertical position
       gridSize = constrain(gridSize, 1, 1000); // Constrain the grid size to reasonable values
 
-      for (let y = 5; y < height; y += gridSize) {
-        for (let x = 5; x < width; x += gridSize) {
+      for (let y = 10; y < height; y += gridSize) {
+        for (let x = 10; x < width; x += gridSize) {
           // Alternate colors based on grid position
           let currentColor = (int(x / gridSize) + int(y / gridSize)) % 2 === 0 ? color1 : color2;
           fill(currentColor);
