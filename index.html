@@ -51,6 +51,11 @@ function keyPressed() {
   }
 }
 
+function mousePressed() {
+      fullscreen(!fullscreen());
+    }
+
+
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight); // Adjust canvas on resize
 }
